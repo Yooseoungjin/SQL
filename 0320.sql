@@ -177,11 +177,12 @@ SELECT
     ,JOB
     ,GROUPING(1) AS "1"
     ,GROUPING(DEPTNO) AS D_no
+    ,GROUPING(2) AS "2"
     ,GROUPING(JOB) AS J_no
-    ,GROUPING_ID(1,DEPTNO, JOB) G_no
+    ,GROUPING_ID(1,DEPTNO,2, JOB) G_no
     ,SUM(SAL)
 FROM EMP
-GROUP BY ROLLUP(1,DEPTNO,JOB);
+GROUP BY ROLLUP(1,DEPTNO,2,JOB);
 -----------------------------------
 SELECT
     DECODE(
@@ -216,7 +217,7 @@ SELECT
     ) AS DEPTNO
     ,DECODE(
         GROUPING_ID(DEPTNO,JOB)
-        ,1, '소계'
+        ,1, (DEPTNO||' 부서소계')
         ,3, '합계'
         ,JOB
     ) AS JOB
