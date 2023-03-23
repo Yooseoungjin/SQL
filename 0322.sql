@@ -3,7 +3,7 @@ CREATE TABLE dept_temp
 as(SELECT * FROM dept);
 
 SELECT *
-FROM dept_temp
+FROM dept
 
 --데이터 입력
 INSERT INTO DEPT_temp (deptno,dname,loc)
